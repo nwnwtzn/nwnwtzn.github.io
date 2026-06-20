@@ -1,0 +1,75 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 5%;
+}
+
+h1 {
+    font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #393939;
+    margin: 0;
+    margin-bottom: 1.0rem;
+    margin-top: 1.0rem;
+}
+
+h2 {
+    font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+    font-size: 2.2rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-left: 0.7rem solid #c63c28;
+    color: #393939;
+    margin: 3.0rem 0 1.0rem 0;
+}
+
+h3 {
+    font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-bottom: 0.3rem solid #c63c28;
+    color: #393939;
+    margin: 2.0rem 0 1.0rem 0;
+}
+
+p {
+    font-size: 1.7rem;
+    font-weight: normal;
+    color: #1f1f1f;
+    word-break: break-all;
+    margin: 1.0rem;
+    padding-bottom: 1.0rem;
+}
+
+img {
+    max-width: 100%;
+    max-height: 40rem;
+    margin: auto;
+    margin-top: 2.0rem;
+    margin-bottom: 2.0rem;
+    display: block;
+}
+
+.date {
+    font-size: 1.2rem;
+    color: #7a7a7a;
+    text-align: right;
+}
+
+.youtube {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 2.0rem 0 2.0rem 0;
+  }
+
+.youtube iframe {
+    width: 100%;
+    height: 100%;
+  }

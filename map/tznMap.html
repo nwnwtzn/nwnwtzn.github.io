@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ﾇﾜﾇﾜくろさば登山マップ</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="map.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map', {
+            crs: L.CRS.Simple, // 経度緯度ではなくXY座標を使う
+            minZoom: 2, // 初期ズーム
+            maxZoom: 5 // 最大ズーム
+        });
+        map.setView([-100, 100], 3); // 中心を設定
+
+        map.zoomControl.setPosition('bottomright');
+
+        // タイル画像を読み込む（tiles/z/x/y.png のフォルダを指定）
+        L.tileLayer('tilesv05/{z}/{x}/{y}.png', {
+            tileSize: 256,
+            maxZoom: 5, // MapTiler で作成した最大ズームと合わせる
+            noWrap: true
+        }).addTo(map);
+
+        var pointIcon = L.icon({
+            iconUrl: 'icon-point.png', // 任意のアイコン画像
+            iconSize: [30, 30], // アイコンのサイズ
+            iconAnchor: [15, 15], // 位置調整
+            popupAnchor: [0, -32]
+        });
+        
+        // JSONデータを取得してマーカーを追加
+        fetch('tznPoints.json')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(point => {
+                    var marker =L.marker([point.y, point.x], { icon: pointIcon}).addTo(map)
+
+                        marker.bindPopup(
+                            `<b>${point.name}</b><br>
+                            ${point.note}<br>
+                            <img src="popupImages/popup${point.id}.png" class="popup-img">
+                            <a href="../articles/pages/a${point.id}.html" class="popup-link" target="article-frame">詳細</a>`);
+                            
+                });
+            })
+            .catch(error => console.error('JSONの読み込みに失敗しました', error));
+
+    // クリックした座標をコンソールに表示
+    map.on('click', function (e) {
+            var x = Number(e.latlng.lng.toFixed(2));
+            var y = Number(e.latlng.lat.toFixed(2));
+            console.log(`クリック座標 → "x": ${x}, "y": ${y}`);
+        });
+
+    </script>
+</body>
+</html>
